@@ -1,0 +1,14 @@
+{
+  "name": "jamdesk",
+  "description": "Build Jamdesk documentation sites with Claude. Complete reference for 25+ MDX components, docs.json configuration, 8 navigation patterns, CLI commands, and writing standards.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Jamdesk",
+    "email": "support@jamdesk.com",
+    "url": "https://www.jamdesk.com"
+  },
+  "homepage": "https://www.jamdesk.com/docs",
+  "repository": "https://github.com/jamdesk/jamdesk-claude-plugin",
+  "license": "Apache-2.0",
+  "keywords": ["documentation", "jamdesk", "mdx", "api-reference", "docs", "technical-writing"]
+}

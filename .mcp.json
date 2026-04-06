@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "Jamdesk": {
+      "type": "http",
+      "url": "https://jamdesk.com/docs/_mcp"
+    }
+  }
+}

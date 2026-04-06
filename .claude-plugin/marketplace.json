@@ -1,0 +1,19 @@
+{
+  "name": "jamdesk-marketplace",
+  "owner": {
+    "name": "Jamdesk",
+    "email": "support@jamdesk.com",
+    "url": "https://www.jamdesk.com"
+  },
+  "plugins": [
+    {
+      "name": "jamdesk",
+      "source": "./",
+      "description": "Comprehensive skill for building Jamdesk documentation sites.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Jamdesk"
+      }
+    }
+  ]
+}
