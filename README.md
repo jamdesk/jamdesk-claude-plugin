@@ -46,7 +46,7 @@ One skill with a quick-reference hub and three detailed reference files:
 | **Configuration** | Full `docs.json` schema — themes, colors, branding, navbar, footer, API config, 20+ analytics integrations |
 | **Navigation** | 8 navigation patterns — flat, grouped, tabbed, multi-product, versioned, multi-language, dropdowns, OpenAPI |
 
-Plus: CLI command reference (20 commands), page frontmatter fields, image sizing syntax, writing standards, common mistakes, and an MCP server integration for querying Jamdesk documentation.
+Plus: CLI command reference (19 commands), page frontmatter fields, image sizing syntax, writing standards, common mistakes, and an MCP server integration for querying Jamdesk documentation.
 
 ## What is Jamdesk?
 
