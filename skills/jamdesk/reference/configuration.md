@@ -61,6 +61,7 @@ All configuration lives in `docs.json` at the project root.
 | `interaction` | object | — | Drilldown navigation behavior |
 | `integrations` | object | — | Analytics and support tools |
 | `analytics` | object | — | Jamdesk built-in analytics |
+| `auth` | object | — | Access control (password protection) |
 | `spellcheck` | object | — | Spelling ignore list |
 
 ---
@@ -618,6 +619,90 @@ Over 150 tech terms are built-in (API, SDK, TypeScript, JavaScript, etc.).
 
 ---
 
+## Auth (Password Protection)
+
+Restrict access to your docs site with a shared password. Two modes: **whole-site** (all pages gated) and **specific pages** (only marked pages gated).
+
+The password itself is set in the Jamdesk dashboard, not in `docs.json`. The config below controls which pages are protected and how.
+
+### Mode 1: Whole Site
+
+Gate every page behind a password. Optionally allow specific pages to remain public.
+
+```json
+{
+  "auth": {
+    "password": {
+      "enabled": true,
+      "hint": "Ask your account manager",
+      "public": ["/changelog", "/status/*"]
+    }
+  }
+}
+```
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `enabled` | boolean | `false` | Gate the entire site behind a password |
+| `hint` | string | — | Hint shown on the unlock page (plain text, max 200 chars) |
+| `public` | array | — | Paths or globs that bypass the password. Supports `*` (one segment) and `**` (recursive). Max 100 entries |
+
+**Public exceptions** can also be declared via:
+- **Frontmatter**: `public: true` in a page's MDX frontmatter
+- **Navigation groups**: `"public": true` on a group in `docs.json`
+
+All three sources are merged. A page marked both public and private is treated as **public**.
+
+### Mode 2: Specific Pages
+
+Gate only certain pages. Every other page stays public. This mode activates automatically when private markers exist but `enabled` is not `true`.
+
+**Option A — Frontmatter (recommended for per-page control):**
+
+```mdx
+---
+title: Internal API Guide
+private: true
+---
+
+This page requires a password.
+```
+
+**Option B — Config array:**
+
+```json
+{
+  "auth": {
+    "password": {
+      "private": ["/internal/roadmap", "/internal/api-keys"],
+      "hint": "Use the team password"
+    }
+  }
+}
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `private` | array | Exact paths (starting with `/`) that require the password |
+
+Both sources are merged — frontmatter `private: true` and `auth.password.private[]` entries combine into the private set.
+
+### Mode Detection
+
+| Condition | Mode | Behavior |
+|-----------|------|----------|
+| `auth.password.enabled: true` | Whole site | All pages gated; `public` paths are exceptions |
+| `private: true` markers exist (no `enabled`) | Specific pages | Only marked pages are gated |
+| Neither | Off | No password protection |
+
+Whole-site mode takes precedence: if `enabled: true` is set, `private` markers are ignored.
+
+### Dashboard
+
+The dashboard shows the current mode ("Whole site" or "Specific pages"), lists private/public pages, and provides the interface for setting or changing the password.
+
+---
+
 ## Integrations
 
 Analytics and support tool integrations:
@@ -709,6 +794,7 @@ When `true`, all docs URLs are prefixed with `/docs/`. Requires a proxy (Cloudfl
       }
     ]
   },
+  "auth": { "password": { "enabled": true, "hint": "Ask your account manager", "public": ["/changelog"] } },
   "api": { "openapi": "openapi.yaml", "playground": { "display": "interactive" } },
   "integrations": { "plausible": { "domain": "docs.acme.com" } }
 }
