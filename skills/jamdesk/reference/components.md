@@ -492,7 +492,9 @@ API response field documentation.
 
 ## RequestExample & ResponseExample
 
-Code blocks that render in the right sidebar panel.
+Code blocks that render in the right sidebar panel on `api:` and `openapi:` pages.
+
+> **Important:** On API pages, fenced code blocks (` ``` `) only move into the right-side code panel when wrapped in `<RequestExample>` or `<ResponseExample>` (or auto-rendered from an OpenAPI spec's `responses`). Bare fences stay inline in the prose column. The build emits an `inline_code_on_api_page` warning when an `api:` page has unwrapped code blocks — fix it by wrapping each example.
 
 ````mdx
 <RequestExample>
@@ -520,6 +522,48 @@ const res = await fetch("https://api.example.com/users", {
   "error": "Invalid API key"
 }
 ```
+</ResponseExample>
+````
+
+**Wrong** — bare fences render inline in the prose column on an API page:
+
+````mdx
+---
+title: Get Batch Status
+api: 'GET /v1/calls/batch/{id}/status'
+---
+
+```bash
+curl https://api.example.com/v1/calls/batch/abc/status
+```
+
+```json
+{ "ok": true }
+```
+````
+
+**Right** — wrapped fences render in the right-side code panel:
+
+````mdx
+---
+title: Get Batch Status
+api: 'GET /v1/calls/batch/{id}/status'
+---
+
+<RequestExample>
+
+```bash
+curl https://api.example.com/v1/calls/batch/abc/status
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json
+{ "ok": true }
+```
+
 </ResponseExample>
 ````
 
