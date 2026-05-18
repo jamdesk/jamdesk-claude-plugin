@@ -746,6 +746,40 @@ sequenceDiagram
 
 ---
 
+## D2
+
+Architecture, flowchart, sequence, and SQL diagrams from text. Authored as a ` ```d2 ` fenced code block (no component wrapper, like ` ```mermaid `); renders to SVG at build time with automatic light/dark theming.
+
+````mdx
+```d2
+client: Client
+api: API
+db: Database { shape: cylinder }
+
+client -> api: request
+api -> db: query
+db -> api: rows
+api -> client: response
+```
+````
+
+````mdx
+```d2
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+ingest -> queue -> worker -> store
+worker -> cache
+```
+````
+
+Light and dark SVGs are generated automatically. The layout engine is chosen in the diagram source via D2-native `vars: { d2-config }` (`dagre` default, `elk` for denser graphs) — it is not a component prop.
+
+---
+
 ## Update
 
 Changelog entry with version label and tags.
