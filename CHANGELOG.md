@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.3] - 2026-05-18
+
+### Added
+- D2 diagram support: fenced ```` ```d2 ```` blocks render to SVG (build-time) with automatic light/dark theming; layout engine selected via D2-native `vars: { d2-config }`
+
 ## [1.0.2] - 2026-05-09
 
 ### Changed
