@@ -180,6 +180,7 @@ pnpm add my-package
 | `jamdesk dev --port <port>` | Start on custom port (default: 3000) |
 | `jamdesk dev --clean` | Clear build cache before starting |
 | `jamdesk dev --webpack` | Use Webpack instead of Turbopack |
+| `jamdesk dev --no-open` | Don't auto-open the browser (default: opens the docs URL while compiling; also disable with `"open": false` in `~/.jamdeskrc` or `JAMDESK_NO_OPEN=1` / `CI`) |
 
 ### Quality Checks
 

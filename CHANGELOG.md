@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.3] - 2026-05-19
+
+### Added
+- `jamdesk dev --no-open` flag in the CLI command reference. `jamdesk dev` now auto-opens the docs URL in the browser while Turbopack compiles (shows the branded loading page, then auto-advances); document the opt-outs: `--no-open` per run, `"open": false` in `~/.jamdeskrc`, or `JAMDESK_NO_OPEN=1` / `CI` in the environment. Mirrors CLI `jamdesk@1.1.104`.
+
 ## [1.0.2] - 2026-05-09
 
 ### Changed
