@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.4] - 2026-05-26
+
+### Added
+- `background.decoration: "none"` option to disable the jam light-mode gradient.
+- `background.gradient` tuning fields (`color`, `size`, `position`, `opacity`) for parametric jam gradients. Requires `color-mix()` support; older browsers get the static jam gradient.
+- Note that `background.color: { light, dark }` overrides `--color-bg-primary` on any theme.
+
+Mirrors `jamdesk@1.1.117`.
+
 ## [1.0.3] - 2026-05-19
 
 ### Added

@@ -290,6 +290,12 @@ External links at the top of the sidebar, visible on every page:
     "color": {
       "light": "#ffffff",
       "dark": "#0a0a0a"
+    },
+    "gradient": {
+      "color": "#7c3aed",
+      "size": "800px",
+      "position": "top center",
+      "opacity": 0.25
     }
   }
 }
@@ -298,8 +304,14 @@ External links at the top of the sidebar, visible on every page:
 | Field | Type | Description |
 |-------|------|-------------|
 | `image` | string \| object | Background image path or `{ light, dark }` |
-| `decoration` | string | `gradient`, `grid`, or `windows` |
-| `color` | object | `{ light, dark }` background colors |
+| `decoration` | string | `gradient`, `grid`, `windows`, or `none` (disables jam light-mode gradient) |
+| `color` | object | `{ light, dark }` background color overrides for any theme |
+| `gradient.color` | string | Override jam gradient hue (default: `colors.primary`) |
+| `gradient.size` | string | Gradient radius — CSS length (default: `500px`) |
+| `gradient.position` | string | Gradient center — CSS background-position (default: `top center`) |
+| `gradient.opacity` | number | Overall gradient intensity multiplier `0–1` (default: `1`) |
+
+Gradient tuning requires `color-mix()` (Chrome 111+, Firefox 113+, Safari 16.2+). Older browsers fall back to the static jam gradient.
 
 ---
 
