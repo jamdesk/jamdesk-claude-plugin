@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.5] - 2026-05-26
+
+### Changed
+- Upstream docs schema (`www.jamdesk.com/docs.json`) corrected its inverted `logo.light` / `logo.dark` and `favicon.light` / `favicon.dark` descriptions — the previous text claimed `light` was shown in dark mode and vice versa, which contradicted both the actual renderer and this plugin's reference. Plugin content was already accurate; no doc changes needed, but bumped to mark alignment with the corrected upstream schema.
+
 ## [1.0.4] - 2026-05-26
 
 ### Added
