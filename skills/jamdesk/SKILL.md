@@ -62,6 +62,9 @@ All frontmatter fields:
 | `openapi` | string | OpenAPI operation (e.g., `GET /users`) |
 | `asyncapi` | string | AsyncAPI operation |
 | `keywords` | string[] | SEO keywords for search indexing |
+| `canonical` | string | Canonical URL for the page, overriding the auto-generated one |
+| `og:*` / `twitter:*` | string | Per-page Open Graph and Twitter/X social-preview tags (e.g. `og:title`, `og:image`, `twitter:card`). Set flat (Mintlify style) or under a nested `seo:` block |
+| `seo` | object | Nested block holding any social/SEO meta keys plus arbitrary custom meta tags |
 | `noindex` | boolean | Exclude page from search engines and sitemap |
 | `tag` | string | Badge label in sidebar (e.g., `"New"`, `"Beta"`) |
 
