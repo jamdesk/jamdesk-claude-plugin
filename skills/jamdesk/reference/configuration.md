@@ -433,7 +433,7 @@ Font Awesome styles: `solid`, `regular`, `light`, `thin`, `duotone`, `brands`, `
 
 | Field | Type | Default | Description |
 |-------|------|---------|-------------|
-| `metatags` | object | — | Custom meta tags (key-value pairs) |
+| `metatags` | object | — | Custom meta tags applied to every page (og:image sets the default social card; canonical sets a base URL each page's path is appended to). Per-page frontmatter overrides these. |
 | `indexing` | string | `"navigable"` | `navigable` (only nav pages) or `all` |
 | `indexHiddenPages` | boolean | `false` | Include hidden pages in sitemap |
 

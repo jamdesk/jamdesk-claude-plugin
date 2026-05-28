@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.6] - 2026-05-28
+
+### Added
+- Per-page SEO/social frontmatter: document that authors can set Open Graph, Twitter/X, `canonical`, and `keywords` meta tags directly in a page's frontmatter — as flat top-level keys (Mintlify style) or under a nested `seo:` block — with per-page values overriding `docs.json` `seo.metatags` defaults. Mirrors `jamdesk@1.1.121`.
+
 ## [1.0.5] - 2026-05-26
 
 ### Changed
