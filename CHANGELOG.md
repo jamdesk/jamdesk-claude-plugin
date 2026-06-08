@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.6] - 2026-06-08
+
+### Added
+- `Widget` component reference — drops a live "What's New" trigger into a docs page that opens your changelog (or any docs page) in a modal, the MDX counterpart to the embeddable `<script>` widget. Documents all props (`page`, `label`, `theme`, `trigger`, `width`/`height`, `radius`, `unread`, `unreadColor`, `project`, `className`), the auto-resolved `*.jamdesk.app` origin, and the per-origin unread state. Mirrors `jamdesk` build-service `<Widget>`.
+
 ## [1.0.5] - 2026-05-26
 
 ### Changed

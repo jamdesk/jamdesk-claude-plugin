@@ -772,6 +772,35 @@ Changelog entry with version label and tags.
 
 ---
 
+## Widget
+
+Drops a live "What's New" trigger into a docs page. Renders a button that opens your Jamdesk changelog (or any docs page) in a modal — the same widget customers embed in their own app, but as one MDX tag instead of a `<script>`. Resolves the canonical `*.jamdesk.app` origin automatically, so it works on subdomains and custom domains alike.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `page` | string | `/changelog` | Docs path the modal opens (a wrong path 404s the modal) |
+| `label` | string | `What's new` | Trigger button text |
+| `theme` | `auto` \| `light` \| `dark` | `auto` | Modal color scheme |
+| `trigger` | CSS selector | — | Bind to your own element instead of rendering a button |
+| `width` / `height` | CSS length | `560px` / `680px` | Modal size |
+| `radius` | CSS length | `12px` | Modal corner radius |
+| `unread` | boolean | `true` | Show the unread dot; set `false` for a demo button |
+| `unreadColor` | hex / CSS color | `#e5484d` | Unread dot color |
+| `project` | string | derived | Override the stored per-origin "seen" key |
+| `className` | string | — | Extra classes for the rendered button |
+
+```mdx
+<Widget />
+
+<Widget page="/reference/changelog" label="See what's new" unread={false} />
+
+<Widget trigger="#whats-new" page="/changelog" />
+```
+
+The modal always loads from the `*.jamdesk.app` subdomain (the only origin that can render the embedded view). The unread "seen" state is per-browser and per-origin. To embed the widget in your own product with a `<script>` tag instead, see the Embed a Page guide.
+
+---
+
 ## YouTube
 
 Embedded YouTube video with lazy loading.
