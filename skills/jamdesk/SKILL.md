@@ -200,6 +200,7 @@ pnpm add my-package
 | `jamdesk deploy` | Upload docs and trigger build (shows live progress) |
 | `jamdesk deploy --detach` | Deploy without waiting for build to finish |
 | `jamdesk deploy --full-rebuild` | Force full rebuild (no cache) |
+| `jamdesk deploy --allow-empty` | Deploy even with zero .mdx content pages (deploys with no content are refused by default to prevent accidentally publishing an empty site) |
 | `jamdesk deploy-proxy cloudflare` | Generate Cloudflare Worker for hosting at custom domain |
 
 ### Authentication
