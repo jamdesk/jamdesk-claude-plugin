@@ -1,13 +1,7 @@
 {
   "name": "jamdesk",
   "description": "Build Jamdesk documentation sites with Claude. Complete reference for 25+ MDX components, docs.json configuration, 8 navigation patterns, CLI commands, and writing standards.",
-<<<<<<< Updated upstream
-  "version": "1.0.6",
-||||||| Stash base
-  "version": "1.0.4",
-=======
-  "version": "1.0.5",
->>>>>>> Stashed changes
+  "version": "1.0.7",
   "author": {
     "name": "Jamdesk",
     "email": "support@jamdesk.com",

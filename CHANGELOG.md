@@ -1,6 +1,12 @@
 # Changelog
 
-<<<<<<< Updated upstream
+## [1.0.7] - 2026-06-10
+
+### Added
+- `jamdesk deploy --allow-empty` flag in the CLI command reference. `jamdesk deploy` now refuses to publish when zero `.mdx` content pages are found (snippets don't count) — the build service independently enforces the same guard server-side — and `--allow-empty` is the per-deploy escape hatch for intentional empty publishes.
+
+Mirrors `jamdesk@1.1.137`.
+
 ## [1.0.6] - 2026-06-08
 
 ### Added
@@ -10,15 +16,6 @@
 
 ### Changed
 - Upstream docs schema (`www.jamdesk.com/docs.json`) corrected its inverted `logo.light` / `logo.dark` and `favicon.light` / `favicon.dark` descriptions — the previous text claimed `light` was shown in dark mode and vice versa, which contradicted both the actual renderer and this plugin's reference. Plugin content was already accurate; no doc changes needed, but bumped to mark alignment with the corrected upstream schema.
-||||||| Stash base
-=======
-## [1.0.5] - 2026-06-10
-
-### Added
-- `jamdesk deploy --allow-empty` flag in the CLI command reference. `jamdesk deploy` now refuses to publish when zero `.mdx` content pages are found (snippets don't count) — the build service independently enforces the same guard server-side — and `--allow-empty` is the per-deploy escape hatch for intentional empty publishes.
-
-Mirrors `jamdesk@1.1.137`.
->>>>>>> Stashed changes
 
 ## [1.0.4] - 2026-05-26
 
