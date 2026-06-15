@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.8] - 2026-06-14
+
+### Added
+- `EmailSubscribe` component reference — inline newsletter/changelog signup form with native capture for seven providers (`resend`, `mailchimp`, `kit`, `loops`, `beehiiv`, `brevo`, `sendgrid`) plus embed-only `buttondown`/`substack`. Documents all props (`provider`, `title`, `description`, `collapsed`, `username`, `snippet`, `className`), the native-vs-embed split, compact (`collapsed`) mode, and the per-browser returning-subscriber memory.
+- `integrations.newsletter` configuration reference — the `docs.json` block that drives `<EmailSubscribe>` and, with `placement: "changelog"`, auto-mounts a signup form on every changelog page. Documents every field (`provider`, `title`, `description`, `collapsed`, `username`, `snippet`, `height`, `placement`), the backend-only API-key storage, and the dashboard copy fallback.
+
+Mirrors the multi-vendor newsletter feature in `jamdesk` build-service (CLI `jamdesk@1.1.142`).
+
 ## [1.0.7] - 2026-06-10
 
 ### Added

@@ -801,6 +801,42 @@ The modal always loads from the `*.jamdesk.app` subdomain (the only origin that 
 
 ---
 
+## EmailSubscribe
+
+Inline newsletter/changelog signup form. Native capture for seven providers (Jamdesk writes the subscriber to your connected audience); embed-only fallback for the rest. Connect the provider in the dashboard first (Settings → Email Signups).
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `provider` | string | — | `resend`, `mailchimp`, `kit`, `loops`, `beehiiv`, `brevo`, `sendgrid` (native) or `buttondown`, `substack` (embed-only) |
+| `title` | string | — | Heading above the form |
+| `description` | string | — | Supporting line under the heading |
+| `collapsed` | boolean | `false` | Native only. Start as a compact Subscribe button that expands to the full field on click |
+| `username` | string | — | Buttondown / Substack account username (embed-only providers) |
+| `snippet` | string | — | Raw embed markup from any other provider (escape hatch) |
+| `className` | string | — | Extra class on the wrapper |
+
+```mdx
+<EmailSubscribe provider="resend" />
+
+<EmailSubscribe
+  provider="resend"
+  title="Get release notes"
+  description="One email when we ship something new. No spam."
+/>
+
+<EmailSubscribe provider="resend" collapsed title="Subscribe to updates" />
+
+<EmailSubscribe provider="substack" username="acme" />
+```
+
+**Native vs. embed:** native providers (`resend`, `mailchimp`, `kit`, `loops`, `beehiiv`, `brevo`, `sendgrid`) render a Jamdesk-hosted form and need a connected key. Embed-only providers (`buttondown`, `substack`) render that service's own form from a `username` — no key. A native provider named without a dashboard connection won't capture anything.
+
+**Returning subscribers:** after a reader subscribes through a native form, the browser remembers it (in `localStorage`) and shows *You're subscribed to the newsletter.* on the next visit, with a "Use a different email?" control to reopen the form. Automatic — nothing to configure.
+
+To mount the form on every changelog page automatically instead of per-page, set `integrations.newsletter.placement: "changelog"` in `docs.json` (see configuration reference).
+
+---
+
 ## YouTube
 
 Embedded YouTube video with lazy loading.

@@ -758,6 +758,35 @@ Analytics and support tool integrations:
 }
 ```
 
+### Newsletter (Email Signups)
+
+Configures the `<EmailSubscribe>` component and, with `placement: "changelog"`, auto-mounts a signup form on every changelog page (any page with `rss: true`):
+
+```json
+{
+  "integrations": {
+    "newsletter": {
+      "provider": "resend",
+      "title": "Get release notes",
+      "placement": "changelog"
+    }
+  }
+}
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `provider` | string | `resend`, `mailchimp`, `kit`, `loops`, `beehiiv`, `brevo`, `sendgrid`, `buttondown`, or `substack` |
+| `title` | string | Form heading (falls back to the dashboard's Form title) |
+| `description` | string | Form supporting line (falls back to the dashboard's Form subtitle) |
+| `collapsed` | boolean | Native only — start as a compact Subscribe button |
+| `username` | string | Buttondown / Substack username (embed-only providers) |
+| `snippet` | string | Raw embed markup (escape hatch) |
+| `height` | string | Embed iframe height |
+| `placement` | `none` \| `changelog` | `none` (default) or `changelog` to auto-mount on changelog pages |
+
+Native providers (`resend`, `mailchimp`, `kit`, `loops`, `beehiiv`, `brevo`, `sendgrid`) need an API key connected in the dashboard (Settings → Email Signups); the key is stored backend-only, never in `docs.json`. To skip auto-placement on one changelog page, set `newsletter: false` in that page's frontmatter. Leave `title`/`description` out to inherit the dashboard copy.
+
 ---
 
 ## hostAtDocs
