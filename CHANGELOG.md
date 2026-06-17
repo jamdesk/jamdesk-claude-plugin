@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.9] - 2026-06-17
+
+### Added
+- `seo.ai.llmsTxt` docs.json option. Defaults to `true`; set `false` to stop publishing `llms.txt` and `llms-full.txt` for AI crawlers. Independent of search indexing (`seo.metatags.robots` / per-page `noindex`) — a page can be search-indexed while excluded from AI ingestion, or vice versa.
+
+Mirrors `jamdesk@1.1.149`.
+
 ## [1.0.8] - 2026-06-14
 
 ### Added

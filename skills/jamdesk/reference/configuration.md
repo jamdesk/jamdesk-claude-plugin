@@ -426,7 +426,10 @@ Font Awesome styles: `solid`, `regular`, `light`, `thin`, `duotone`, `brands`, `
       "twitter:card": "summary_large_image"
     },
     "indexing": "navigable",
-    "indexHiddenPages": false
+    "indexHiddenPages": false,
+    "ai": {
+      "llmsTxt": true
+    }
   }
 }
 ```
@@ -436,6 +439,7 @@ Font Awesome styles: `solid`, `regular`, `light`, `thin`, `duotone`, `brands`, `
 | `metatags` | object | — | Custom meta tags (key-value pairs) |
 | `indexing` | string | `"navigable"` | `navigable` (only nav pages) or `all` |
 | `indexHiddenPages` | boolean | `false` | Include hidden pages in sitemap |
+| `ai.llmsTxt` | boolean | `true` | Generate `llms.txt` and `llms-full.txt` for AI tools. Set `false` to stop publishing them. Independent of search indexing — a page can be indexed by search engines while excluded from AI ingestion, or vice versa. |
 
 ---
 
