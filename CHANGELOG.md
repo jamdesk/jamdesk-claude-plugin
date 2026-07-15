@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.12] - 2026-07-15
+
+### Changed
+- Top-level navigation groups are permanent sections again: always open, no chevron, clicking the title navigates to the group's first page. Nested named groups keep the accordion behavior introduced in 1.0.11. `expanded: true` now only has a visible effect on nested groups.
+
+Mirrors the shared Jamdesk visitor Sidebar behavior.
+
 ## [1.0.11] - 2026-07-15
 
 ### Changed

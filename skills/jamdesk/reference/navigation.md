@@ -57,7 +57,7 @@ Best for: Small docs with fewer than 10 pages.
 
 ## Pattern 2: Grouped Pages
 
-Pages organized into collapsible sidebar groups:
+Pages organized into sidebar groups:
 
 ```json
 {
@@ -89,10 +89,10 @@ Pages organized into collapsible sidebar groups:
 | `group` | string | — | Group title (required) |
 | `icon` | string | — | Font Awesome icon |
 | `pages` | array | — | Pages and/or nested groups |
-| `expanded` | boolean | `false` | Open the named group on first load; works at top-level and nested levels. Active ancestor groups open automatically on initial load and route changes. |
+| `expanded` | boolean | `false` | Open a nested named group on first load. Top-level groups are always open, so the flag has no visible effect there. Active ancestor groups open automatically on initial load and route changes. |
 | `hidden` | boolean | `false` | Hide from sidebar |
 
-Every named group is collapsible, including groups directly under a tab. Named groups start closed unless they contain the current page or set `expanded: true`; initial load and route changes open the current page's complete ancestor chain. Clicking a closed group opens it and navigates to its first descendant page, while clicking an open group closes it, including when it contains the active page. Manual expansion persists during in-app navigation and resets on a full refresh. Unnamed containers render their pages without a toggle.
+Top-level groups (directly under the navigation root or a tab) are permanent sections: the title and its pages are always visible, there is no chevron, and clicking the title navigates to the group's first page. Nested named groups are collapsible accordions: they start closed unless they contain the current page or set `expanded: true`; initial load and route changes open the current page's complete ancestor chain. Clicking a closed nested group opens it and navigates to its first descendant page, while clicking an open one closes it, including when it contains the active page. Manual expansion persists during in-app navigation and resets on a full refresh. Unnamed containers render their pages without a toggle.
 
 Best for: Most documentation sites — clear organization with 10–50 pages.
 
