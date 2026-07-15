@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.13] - 2026-07-15
+
+### Changed
+- Expanding a nested navigation group no longer navigates to its first page — the caret only reveals the pages; navigation happens when a page is clicked. Top-level section titles still navigate to their section's first page.
+
+Mirrors the shared Jamdesk visitor Sidebar behavior.
+
 ## [1.0.12] - 2026-07-15
 
 ### Changed
