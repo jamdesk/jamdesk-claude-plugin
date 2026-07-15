@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.11] - 2026-07-15
+
+### Changed
+- Navigation groups now use the same accordion behavior at every named level: top-level and nested groups start closed unless active or configured with `expanded: true`, active ancestors open on initial load and route changes, and opening a closed group navigates to its first page.
+
+Mirrors the shared Jamdesk visitor Sidebar behavior.
+
 ## [1.0.10] - 2026-07-15
 
 ### Added

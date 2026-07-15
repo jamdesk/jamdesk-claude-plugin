@@ -89,8 +89,10 @@ Pages organized into collapsible sidebar groups:
 | `group` | string | — | Group title (required) |
 | `icon` | string | — | Font Awesome icon |
 | `pages` | array | — | Pages and/or nested groups |
-| `expanded` | boolean | `false` | Start expanded in sidebar |
+| `expanded` | boolean | `false` | Open the named group on first load; works at top-level and nested levels. Active ancestor groups open automatically on initial load and route changes. |
 | `hidden` | boolean | `false` | Hide from sidebar |
+
+Every named group is collapsible, including groups directly under a tab. Named groups start closed unless they contain the current page or set `expanded: true`; initial load and route changes open the current page's complete ancestor chain. Clicking a closed group opens it and navigates to its first descendant page, while clicking an open group closes it, including when it contains the active page. Manual expansion persists during in-app navigation and resets on a full refresh. Unnamed containers render their pages without a toggle.
 
 Best for: Most documentation sites — clear organization with 10–50 pages.
 
@@ -127,7 +129,7 @@ Groups containing sub-groups for deep hierarchies:
 }
 ```
 
-Nesting depth is unlimited but keep it shallow (2–3 levels max) for usability.
+Nesting depth is unlimited, but keep it to 2–3 levels for usability. Use nested groups to divide a long top-level section. On a fresh load, the active subgroup opens automatically while unrelated subgroups remain closed unless configured with `expanded: true`; groups the visitor opens manually remain open during in-app navigation.
 
 ---
 
