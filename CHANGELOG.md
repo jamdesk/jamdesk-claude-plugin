@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.10] - 2026-07-15
+
+### Added
+- `Prompt` component reference — reusable AI instructions with an always-available Copy action, built-in Cursor/Claude/ChatGPT destinations, safe custom HTTP(S) actions, exact authored-Markdown handling, and complete Fern- and Mintlify-compatible props.
+
+Mirrors the Prompt component shipped in `jamdesk@1.1.168`.
+
 ## [1.0.9] - 2026-06-17
 
 ### Added

@@ -307,6 +307,69 @@ Content rendered in the right sidebar panel (sticky on scroll).
 
 ---
 
+## Prompt
+
+Reusable AI instructions that readers can copy or open in a supported tool. Prompt supports Fern-style `title`, `actions`, `singleLine`, `hidePrompt`, and custom URL actions, plus Mintlify-compatible `description`, `icon`, `iconType`, and an explicit `"copy"` action.
+
+Copy is always available, so a copy-only prompt needs no props:
+
+```mdx
+<Prompt>
+Explain how API key rotation works for a developer using our REST API for the first time.
+</Prompt>
+```
+
+Add `cursor`, `claude`, or `chatgpt` to offer open-in actions. The first valid action appears beside Copy; additional actions appear in the More menu.
+
+```mdx
+<Prompt
+  title="Compare authentication flows"
+  actions={["cursor", "claude", "chatgpt"]}
+>
+Compare the session-token and API-key authentication flows in this repository.
+List their security tradeoffs and recommend which flow each client type should use.
+</Prompt>
+```
+
+Custom actions accept a label, a credential-free HTTP(S) URL, and an optional icon. Put `{prompt}` in a path segment, query value, or fragment to insert the URL-encoded prompt. Without the placeholder, Jamdesk adds a `prompt` query parameter.
+
+```mdx
+<Prompt
+  title="Research this migration"
+  actions={[
+    {
+      label: "Open in Perplexity",
+      url: "https://www.perplexity.ai/search?q={prompt}",
+      icon: "magnifying-glass",
+    },
+    "claude",
+  ]}
+>
+Compare this migration plan with the current public API contract.
+Identify breaking changes, missing rollback steps, and tests needed before release.
+</Prompt>
+```
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | ReactNode | — | Prompt content between the tags. It is rendered as the preview unless `description` replaces the preview or `hidePrompt` hides it. |
+| `title` | string | — | Label displayed in the card header. |
+| `description` | string | — | Mintlify-compatible inline-Markdown preview. It changes only the preview; `children` remain the copied or sent prompt. |
+| `icon` | string \| ReactElement | `sparkles` | Font Awesome name, image URL/path, or inline SVG element. |
+| `iconType` | string | — | Font Awesome style for an unprefixed string icon: `regular`, `solid`, `light`, `thin`, `sharp-solid`, `duotone`, or `brands`. |
+| `actions` | (`copy` \| `cursor` \| `claude` \| `chatgpt` \| CustomAction)[] | `[]` | Actions in display order. `CustomAction` is `{ label: string; url: string; icon?: string }`. Explicit `copy` is accepted and de-duplicated. |
+| `singleLine` | boolean \| string | `false` | Clip the preview to one line when `true` or `"true"`; `"false"` remains disabled. Actions still use the complete prompt. |
+| `hidePrompt` | boolean \| string | `false` | Hide the preview when a title is present and the value is `true` or `"true"`. Without a title, the preview remains visible. |
+| `className` | string | — | Additional classes on the card root. |
+
+Prompt actions use the exact human-visible authored Markdown between the tags, rather than reconstructing text from the rendered preview. Internal formatting is preserved; only whitespace outside the first and last authored content nodes is discarded. Within a Prompt, `<Visibility for="humans">` wrapper tags are omitted while their contents remain. Agent-only or unresolved-audience Visibility subtrees are excluded. A Prompt inside agent-only or unresolved-audience Visibility has no copyable source.
+
+Custom URLs reject non-HTTP(S) schemes, credentials, `{prompt}` in the origin or query keys, and final URLs longer than 8,000 characters. Invalid, duplicate, or oversized open-in actions are omitted; Copy remains available as the lossless fallback.
+
+> **Privacy:** Clicking an open-in action sends the complete copyable prompt to the selected third party. Do not include secrets, personal data, or proprietary content unless you intend to share it under that provider's privacy policy. Copy does not open a third-party service.
+
+---
+
 ## Tile
 
 Preview card with image and link — used for showcasing examples.
