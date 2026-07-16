@@ -10,7 +10,7 @@
       "name": "jamdesk",
       "source": "./",
       "description": "Comprehensive skill for building Jamdesk documentation sites.",
-      "version": "1.0.0",
+      "version": "1.0.14",
       "author": {
         "name": "Jamdesk"
       }

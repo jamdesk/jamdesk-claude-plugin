@@ -1,7 +1,7 @@
 {
   "name": "jamdesk",
   "description": "Build Jamdesk documentation sites with Claude. Complete reference for 50 MDX components, docs.json configuration, 8 navigation patterns, CLI commands, and writing standards.",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "author": {
     "name": "Jamdesk",
     "email": "support@jamdesk.com",

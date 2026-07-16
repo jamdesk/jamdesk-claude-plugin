@@ -362,7 +362,7 @@ Identify breaking changes, missing rollback steps, and tests needed before relea
 | `hidePrompt` | boolean \| string | `false` | Hide the preview when a title is present and the value is `true` or `"true"`. Without a title, the preview remains visible. |
 | `className` | string | — | Additional classes on the card root. |
 
-Prompt actions use the exact human-visible authored Markdown between the tags, rather than reconstructing text from the rendered preview. Internal formatting is preserved; only whitespace outside the first and last authored content nodes is discarded. Within a Prompt, `<Visibility for="humans">` wrapper tags are omitted while their contents remain. Agent-only or unresolved-audience Visibility subtrees are excluded. A Prompt inside agent-only or unresolved-audience Visibility has no copyable source.
+Prompt actions use the exact human-visible authored Markdown between the tags, rather than reconstructing text from the rendered preview. Internal formatting is preserved; only whitespace outside the first and last authored content nodes is discarded. Within a Prompt, `<Visibility for="humans">` wrapper tags are omitted while their contents remain. Agent-only Visibility subtrees are excluded, as are subtrees whose audience is obscured by an expression-valued `for={...}` prop or a later spread attribute. Missing `for`, shorthand `for`, and invalid literal audiences remain visible. A Prompt inside agent-only or expression- or spread-obscured Visibility has no copyable source.
 
 Custom URLs reject non-HTTP(S) schemes, credentials, `{prompt}` in the origin or query keys, and final URLs longer than 8,000 characters. Invalid, duplicate, or oversized open-in actions are omitted; Copy remains available as the lossless fallback.
 

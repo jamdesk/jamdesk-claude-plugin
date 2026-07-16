@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.14] - 2026-07-15
+
+### Fixed
+- Corrected the `Prompt` reference to distinguish fail-closed Visibility audiences (expression-valued `for={...}` props and audiences obscured by a later spread attribute) from fail-visible cases (missing `for`, shorthand `for`, and invalid literal values).
+
+Mirrors the Jamdesk Prompt source-injection behavior.
+
 ## [1.0.13] - 2026-07-15
 
 ### Changed
