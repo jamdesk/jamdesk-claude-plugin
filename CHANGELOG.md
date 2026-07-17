@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.15] - 2026-07-17
+
+### Added
+- `Prompt` gained `perplexity` and `gemini` built-in open-in actions; all built-ins now render inline brand icons (Claude, Cursor, ChatGPT, Perplexity, Gemini).
+
+### Changed
+- The custom URL action example now uses a generic web search instead of Perplexity, which is a built-in action.
+
 ## [1.0.14] - 2026-07-15
 
 ### Fixed

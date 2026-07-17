@@ -319,12 +319,12 @@ Explain how API key rotation works for a developer using our REST API for the fi
 </Prompt>
 ```
 
-Add `cursor`, `claude`, or `chatgpt` to offer open-in actions. The first valid action appears beside Copy; additional actions appear in the More menu.
+Add `cursor`, `claude`, `chatgpt`, `perplexity`, or `gemini` to offer open-in actions, each rendered with its brand icon. The first valid action appears beside Copy; additional actions appear in the More menu.
 
 ```mdx
 <Prompt
   title="Compare authentication flows"
-  actions={["cursor", "claude", "chatgpt"]}
+  actions={["cursor", "claude", "chatgpt", "perplexity", "gemini"]}
 >
 Compare the session-token and API-key authentication flows in this repository.
 List their security tradeoffs and recommend which flow each client type should use.
@@ -338,8 +338,8 @@ Custom actions accept a label, a credential-free HTTP(S) URL, and an optional ic
   title="Research this migration"
   actions={[
     {
-      label: "Open in Perplexity",
-      url: "https://www.perplexity.ai/search?q={prompt}",
+      label: "Search the web",
+      url: "https://www.google.com/search?q={prompt}",
       icon: "magnifying-glass",
     },
     "claude",
@@ -357,7 +357,7 @@ Identify breaking changes, missing rollback steps, and tests needed before relea
 | `description` | string | — | Mintlify-compatible inline-Markdown preview. It changes only the preview; `children` remain the copied or sent prompt. |
 | `icon` | string \| ReactElement | `sparkles` | Font Awesome name, image URL/path, or inline SVG element. |
 | `iconType` | string | — | Font Awesome style for an unprefixed string icon: `regular`, `solid`, `light`, `thin`, `sharp-solid`, `duotone`, or `brands`. |
-| `actions` | (`copy` \| `cursor` \| `claude` \| `chatgpt` \| CustomAction)[] | `[]` | Actions in display order. `CustomAction` is `{ label: string; url: string; icon?: string }`. Explicit `copy` is accepted and de-duplicated. |
+| `actions` | (`copy` \| `cursor` \| `claude` \| `chatgpt` \| `perplexity` \| `gemini` \| CustomAction)[] | `[]` | Actions in display order. `CustomAction` is `{ label: string; url: string; icon?: string }`. Explicit `copy` is accepted and de-duplicated. |
 | `singleLine` | boolean \| string | `false` | Clip the preview to one line when `true` or `"true"`; `"false"` remains disabled. Actions still use the complete prompt. |
 | `hidePrompt` | boolean \| string | `false` | Hide the preview when a title is present and the value is `true` or `"true"`. Without a title, the preview remains visible. |
 | `className` | string | — | Additional classes on the card root. |
