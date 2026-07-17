@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.16] - 2026-07-17
+
+### Changed
+- `Prompt` built-in action labels ("Open in Claude", …) now localize automatically to the page's language (fr, es, de, it, pt, nl, ja, ko, zh variants). Custom-action labels are unchanged — authors localize those per page.
+
 ## [1.0.15] - 2026-07-17
 
 ### Added

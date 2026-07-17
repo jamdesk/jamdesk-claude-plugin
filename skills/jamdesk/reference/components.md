@@ -319,7 +319,7 @@ Explain how API key rotation works for a developer using our REST API for the fi
 </Prompt>
 ```
 
-Add `cursor`, `claude`, `chatgpt`, `perplexity`, or `gemini` to offer open-in actions, each rendered with its brand icon. The first valid action appears beside Copy; additional actions appear in the More menu.
+Add `cursor`, `claude`, `chatgpt`, `perplexity`, or `gemini` to offer open-in actions, each rendered with its brand icon. Built-in action labels localize automatically to the page's language (fr, es, de, it, pt, nl, ja, ko, zh); custom-action labels render exactly as authored. The first valid action appears beside Copy; additional actions appear in the More menu.
 
 ```mdx
 <Prompt
