@@ -719,6 +719,47 @@ The dashboard shows the current mode ("Whole site" or "Specific pages"), lists p
 
 ---
 
+## Auth (JWT Authentication)
+
+Gate docs access from your own login system instead of a shared password. Your backend signs a short-lived JWT per visitor; Jamdesk verifies it and mints a per-user session. Requires a paid plan. Mutually exclusive with `auth.password` — a build with both `enabled: true` fails validation.
+
+```json
+{
+  "auth": {
+    "jwt": {
+      "enabled": true,
+      "loginUrl": "https://app.example.com/docs-login",
+      "public": ["/changelog/*"]
+    }
+  }
+}
+```
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `enabled` | boolean | `false` | Gate the entire site behind JWT auth |
+| `loginUrl` | string | — | Absolute `https://` URL of your login flow. Required when `enabled: true`. Unauthenticated visitors are redirected here with `?redirect=<path>` |
+| `public` | array | — | Paths or globs that bypass authentication. Supports `*` (one segment) and `**` (recursive). Max 100 entries |
+
+The signing key (Ed25519) is generated in the Jamdesk dashboard, not in `docs.json` — the private key is shown once and never stored by Jamdesk.
+
+**Token payload**, signed with `EdDSA` and a short `exp` (recommend ≤10s — this is a handshake window, not the session length):
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `host` | Yes | Must exactly match the request host (case-insensitive) |
+| `expiresAt` | No | Unix seconds; controls session length. Capped at 30 days, defaults to 7 days |
+| `groups` | No | Session group names, up to 32 entries of 64 chars each |
+| `apiPlaygroundInputs` | No | Pre-fill for the API playground (`header`, `query`, `path`); serialized size capped at 2KB |
+
+**Group-based page access**: frontmatter `groups: ["admin"]` restricts a page to sessions carrying an intersecting group; others get a 404. Group-restricted pages are excluded from the sitemap, search, AI chat, and MCP — even for users in the group. An empty `groups: []` means no restriction (remove the field, don't leave it empty); to block a page from everyone, unpublish it instead. Localized copies inherit the base page's groups unless the translation declares its own.
+
+**Redirect flow**: unauthenticated request → 302 to `{loginUrl}?redirect=<path>` → your backend signs a JWT and redirects to `https://<docs-host>/_jd/auth/callback?redirect=<path>#<jwt>` (token in the URL fragment, never sent to the server) → Jamdesk verifies and mints a session cookie → browser lands on the original `redirect` path.
+
+Full guide: [JWT authentication](https://jamdesk.com/docs/setup/jwt-authentication).
+
+---
+
 ## Integrations
 
 Analytics and support tool integrations:

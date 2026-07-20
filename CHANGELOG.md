@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.17] - 2026-07-20
+
+### Added
+- Add `auth.jwt` (JWT authentication) docs.json reference — per-user docs access via a customer-signed JWT, alongside the existing `auth.password` section.
+
 ## [1.0.16] - 2026-07-17
 
 ### Changed
