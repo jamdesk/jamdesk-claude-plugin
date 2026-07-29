@@ -846,6 +846,20 @@ Serve documentation at a subpath (e.g., `example.com/docs`) instead of the root:
 
 When `true`, all docs URLs are prefixed with `/docs/`. Requires a proxy (Cloudflare Worker or similar) to route traffic. Use `jamdesk deploy-proxy cloudflare` to generate one.
 
+The subpath itself is **not** a `docs.json` field — it's set in the dashboard, under Project Settings → Custom Domain → "Host docs at a subpath". It defaults to `/docs` and must be a single lowercase segment (letters, digits, hyphens); a handful of segments are reserved and rejected (e.g. `api`, `jd`, `wp-admin`, and locale codes like `fr`). Renaming it is safe for indexed URLs — the previous subpath keeps 308-redirecting to the new one (one level of history), and `/docs/*` itself always keeps serving no matter what the subpath is set to.
+
+If the proxy is a generated Cloudflare Worker, pass the same value to `--path` so its `PROXY_PATHS` list matches the dashboard setting, e.g. for a subpath of `/help`:
+
+```bash
+jamdesk deploy-proxy cloudflare --path /help
+```
+
+`PROXY_PATHS` needs both the chosen subpath and `/_jd/*` (Jamdesk's shared assets) — the generated template already covers both. If a customer hand-modified their worker (extra proxied paths, custom logic), edit the subpath entry in place after a rename rather than regenerating the whole file — `--path` regeneration is safe only for an unmodified template; on a customized one it silently drops the custom entries.
+
+A stale worker doesn't misroute traffic to the wrong prefix — it fails closed: requests under the new subpath never reach Jamdesk at all (they fall through to the customer's own origin, which normally 404s them), while the old subpath keeps working indefinitely thanks to the serve-both behavior above. "New subpath 404s, old one still works" points at the customer's proxy config, not a Jamdesk bug.
+
+Vercel-proxied custom domains carry the identical risk: the dashboard's `vercel.json` rewrite snippet is only regenerated for the *next copy-paste* — a customer who already pasted it into their own repo must update and redeploy their `vercel.json` after renaming the subpath, or they hit the same fail-closed 404 on the new subpath.
+
 ---
 
 ## Full Example

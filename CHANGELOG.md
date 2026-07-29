@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.18] - 2026-07-29
+
+### Added
+- Custom docs subpath: `hostAtDocs` reference now documents the dashboard-configured subpath (Project Settings → Custom Domain → "Host docs at a subpath" — not a `docs.json` field; defaults to `/docs`, single lowercase segment, some segments reserved, e.g. `api`, `jd`, `wp-admin`, locale codes like `fr`), the rename transition guarantee (old subpath 308-redirects with one level of history, `/docs/*` always keeps serving), and updated `jamdesk deploy-proxy cloudflare --path` guidance — `PROXY_PATHS` needs both the subpath and `/_jd/*`; a stale worker fails closed (new subpath 404s, old one keeps serving) rather than misrouting to the wrong prefix; hand-edit a customized worker's subpath entry instead of regenerating it; and Vercel-proxied domains carry the identical staleness risk and remedy.
+
 ## [1.0.17] - 2026-07-20
 
 ### Added
