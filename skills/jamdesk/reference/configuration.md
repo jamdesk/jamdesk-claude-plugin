@@ -854,7 +854,9 @@ If the proxy is a generated Cloudflare Worker, pass the same value to `--path` s
 jamdesk deploy-proxy cloudflare --path /help
 ```
 
-`PROXY_PATHS` needs both the chosen subpath and `/_jd/*` (Jamdesk's shared assets) — the generated template already covers both. If a customer hand-modified their worker (extra proxied paths, custom logic), edit the subpath entry in place after a rename rather than regenerating the whole file — `--path` regeneration is safe only for an unmodified template; on a customized one it silently drops the custom entries.
+`PROXY_PATHS` needs both the chosen subpath and `/_jd/*` (Jamdesk's shared assets) — the generated template already covers both. If a customer hand-modified their worker (extra proxied paths, custom logic), edit the subpath entry in place after a rename rather than regenerating the whole file — `--path` regeneration is safe only for an unmodified template; on a customized one it drops the custom entries.
+
+Regenerating into a directory that already exists takes `--force`; without it the command asks first, and under `--yes` it stops rather than overwrite. `--yes` also never deploys — it writes the files and leaves `npx wrangler deploy` to you.
 
 A stale worker doesn't misroute traffic to the wrong prefix — it fails closed: requests under the new subpath never reach Jamdesk at all (they fall through to the customer's own origin, which normally 404s them), while the old subpath keeps working indefinitely thanks to the serve-both behavior above. "New subpath 404s, old one still works" points at the customer's proxy config, not a Jamdesk bug.
 

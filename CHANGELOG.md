@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.19] - 2026-07-30
+
+### Changed
+- `jamdesk deploy-proxy cloudflare` overwrite guidance: regenerating into an existing directory now requires `--force` (interactive runs ask; `--yes` stops rather than overwrite), and `--yes` never deploys — it writes the files and leaves `npx wrangler deploy` to the user.
+
 ## [1.0.18] - 2026-07-29
 
 ### Added
