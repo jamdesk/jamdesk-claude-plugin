@@ -52,7 +52,7 @@ Plus: CLI command reference (19 commands), page frontmatter fields, image sizing
 
 [Jamdesk](https://www.jamdesk.com) is a documentation platform for building beautiful, fast documentation sites from MDX files.
 
-- **Three themes** — Jam, Nebula, Pulsar (all with dark mode)
+- **Four themes** — Jam, Nebula, Pulsar, Halo (all with dark mode)
 - **25+ MDX components** — Cards, Steps, Tabs, Code Groups, Tables, API fields, color palettes, and more
 - **OpenAPI & AsyncAPI** — Auto-generated API reference with interactive playground
 - **AI Chat** — Built-in AI assistant trained on your docs content
