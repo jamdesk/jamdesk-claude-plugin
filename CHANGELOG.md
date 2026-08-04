@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.20] - 2026-08-04
+
+### Added
+- Halo, a fourth `theme` value for `docs.json`: warm sand background with content on a raised card, caramel accent, heavily rounded surfaces, Figtree throughout. Added to the `theme` field reference and the theme table, and to the `tabsPosition` defaults (Halo defaults to `"left"`, like `jam` and `nebula`).
+
 ## [1.0.19] - 2026-07-30
 
 ### Changed

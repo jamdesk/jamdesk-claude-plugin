@@ -197,7 +197,7 @@ Multiple top-level tabs for separate documentation sections:
 | `hidden` | boolean | `false` | Hide from sidebar |
 
 **Tab position** (`tabsPosition` in root config):
-- `"left"` — Tabs in sidebar (default for `jam` and `nebula` themes)
+- `"left"` — Tabs in sidebar (default for `jam`, `nebula`, and `halo` themes)
 - `"top"` — Tabs in header bar (default for `pulsar` theme)
 
 Best for: Sites with distinct audiences or content types (guides vs API vs help).
