@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.21] - 2026-08-20
+
+### Added
+- Spec-generated API pages: a top-level tab with `"openapi": { "source": ..., "generate": true }` builds one page per operation plus its sidebar, grouped by tag (path-segment fallback for untagged specs), slugged `<tab>/<method>-<path>`, with committed `.mdx` winning collisions and a redirect emitted when a spec rename moves a slug. Limits documented: `navigation.tabs` only, default language only, `directory` inert.
+- `search` frontmatter field: `false` withholds a page from site search, AI chat, and MCP while leaving it in navigation, the sitemap, and llms.txt — distinct from `hidden`.
+
+### Fixed
+- Navigation reference claimed a bare `"openapi": "spec.yaml"` on a group auto-generates endpoint pages. It does not, and never did — it is accepted, passes validation, and produces nothing. Two "Combining Patterns" examples used that shape and now list pages instead.
+- `asyncapi` (both the `docs.json` key and the frontmatter field) marked accepted-but-not-rendered; `jamdesk validate` warns on it.
+- `api.mdx.server` documented as first-entry-only — an array is accepted but everything past `[0]` is discarded, and validate now warns.
+
 ## [1.0.20] - 2026-08-04
 
 ### Added

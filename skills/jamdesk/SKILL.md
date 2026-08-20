@@ -60,9 +60,10 @@ All frontmatter fields:
 | `icon` | string | Font Awesome icon name |
 | `mode` | string | Layout: `default`, `wide`, `custom`, `frame`, `center` |
 | `openapi` | string | OpenAPI operation (e.g., `GET /users`) |
-| `asyncapi` | string | AsyncAPI operation |
+| `asyncapi` | string | AsyncAPI operation — **accepted but not rendered**; nothing is generated from it |
 | `keywords` | string[] | SEO keywords for search indexing |
 | `noindex` | boolean | Exclude page from search engines and sitemap |
+| `search` | boolean | `false` keeps the page out of site search, AI chat, and MCP, while leaving it in navigation, the sitemap, and llms.txt (not the same as `hidden`) |
 | `tag` | string | Badge label in sidebar (e.g., `"New"`, `"Beta"`) |
 
 ## Quick Component Reference

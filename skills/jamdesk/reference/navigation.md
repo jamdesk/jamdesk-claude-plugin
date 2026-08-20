@@ -468,44 +468,53 @@ Dropdown menus for switching between related documentation sections:
 
 ## OpenAPI in Navigation
 
-Auto-generate endpoint pages from OpenAPI specs:
+Generate one page per operation, plus the sidebar to hold them, by putting an `openapi` **object** with `generate: true` on a top-level tab:
 
 ```json
 {
   "navigation": {
-    "groups": [
+    "tabs": [
       {
-        "group": "Getting Started",
-        "pages": ["introduction", "authentication"]
-      },
-      {
-        "group": "Users API",
-        "openapi": "openapi/users.yaml"
-      },
-      {
-        "group": "Billing API",
-        "openapi": "openapi/billing.yaml"
+        "tab": "API Reference",
+        "openapi": { "source": "/openapi/api.yaml", "generate": true }
       }
     ]
   }
 }
 ```
 
-Pages are auto-generated from each endpoint in the spec. Mix with manual pages:
+| Key | Type | Description |
+|-----|------|-------------|
+| `source` | string | Spec path, relative to `docs.json` |
+| `generate` | boolean | `true` builds the pages and the sidebar |
+
+Pages land under the tab name slugified, with a slug built from method and path (`POST /tickets` → `/api-reference/post-tickets`). Operations group by their first `tag`, falling back to the first meaningful path segment when the spec has no tags. A committed `.mdx` always wins a slug collision, and renaming a path in the spec emits a redirect from the old slug instead of 404ing it.
+
+**Limits:** top-level `navigation.tabs` only — not groups, anchors, or tabs nested under `languages`/`versions` — and the default language only. A `directory` key is accepted by the schema but has no effect.
+
+A bare `"openapi": "openapi.yaml"` on a group or tab — and an object without `generate: true` — generates nothing. It is accepted by the schema and passes validation, but no pages appear. This is deliberate: the opt-in exists so no existing config gains a hundred pages on its next build.
 
 ```json
 {
   "group": "API Reference",
-  "pages": ["api/overview"],
   "openapi": "openapi.yaml"
 }
 ```
 
-Multiple specs:
+To document endpoints without generation, author a page per operation and put the operation in its frontmatter:
+
+```mdx
+---
+title: Create Ticket
+openapi: /openapi/api.yaml POST /tickets
+---
+```
+
+Register every spec you reference under `api.openapi` in `docs.json` so it gets validated on each build:
+
 ```json
 {
-  "group": "API",
-  "openapi": ["openapi/auth.yaml", "openapi/users.yaml", "openapi/posts.yaml"]
+  "api": { "openapi": ["/openapi/auth.yaml", "/openapi/users.yaml"] }
 }
 ```
 
@@ -530,7 +539,7 @@ Tabs can contain groups, products can contain tabs, etc:
       {
         "tab": "API",
         "groups": [
-          { "group": "REST", "openapi": "openapi.yaml" },
+          { "group": "REST", "pages": ["api/create-ticket", "api/list-tickets"] },
           { "group": "Webhooks", "pages": ["api/webhooks"] }
         ]
       }
@@ -549,7 +558,7 @@ Tabs can contain groups, products can contain tabs, etc:
         "name": "Platform",
         "tabs": [
           { "tab": "Guides", "groups": [{ "group": "Setup", "pages": ["intro"] }] },
-          { "tab": "API", "groups": [{ "group": "Endpoints", "openapi": "openapi.yaml" }] }
+          { "tab": "API", "groups": [{ "group": "Endpoints", "pages": ["api/create-ticket"] }] }
         ]
       }
     ]

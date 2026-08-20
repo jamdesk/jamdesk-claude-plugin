@@ -403,7 +403,7 @@ Font Awesome styles: `solid`, `regular`, `light`, `thin`, `duotone`, `brands`, `
 | Field | Type | Description |
 |-------|------|-------------|
 | `openapi` | string \| array | OpenAPI spec path(s) or URL(s) |
-| `asyncapi` | string \| array | AsyncAPI spec path(s) or URL(s) |
+| `asyncapi` | string \| array | AsyncAPI spec path(s) — **accepted but not rendered**; `jamdesk validate` warns |
 | `params.expanded` | string | `all` (expand all) or `closed` (collapsed by default) |
 | `playground.display` | string | `interactive`, `simple`, or `none` |
 | `playground.proxy` | boolean | Enable CORS proxy for playground requests |
@@ -411,7 +411,7 @@ Font Awesome styles: `solid`, `regular`, `light`, `thin`, `duotone`, `brands`, `
 | `examples.languages` | array | Code example languages |
 | `examples.prefill` | boolean | Pre-fill example values |
 | `mdx.auth.method` | string | `bearer`, `basic`, `key`, or `cobo` |
-| `mdx.server` | string \| array | API base URL(s) |
+| `mdx.server` | string \| array | API base URL for `api:` pages. An array is accepted but only `[0]` is used — `jamdesk validate` warns on the rest |
 
 **Supported example languages:** `curl`, `bash`, `python`, `javascript`, `go`, `ruby`, `csharp`, `java`, `rust`, `php`
 
