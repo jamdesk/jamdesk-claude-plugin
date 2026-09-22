@@ -65,6 +65,7 @@ All frontmatter fields:
 | `noindex` | boolean | Exclude page from search engines and sitemap |
 | `search` | boolean | `false` keeps the page out of site search, AI chat, and MCP, while leaving it in navigation, the sitemap, and llms.txt (not the same as `hidden`) |
 | `tag` | string | Badge label in sidebar (e.g., `"New"`, `"Beta"`) |
+| `lastUpdatedDate` | string | Override the "Last updated on" date (must be quoted, e.g. `"2026-09-22"`) — otherwise derived from the last git commit to the file |
 
 ## Quick Component Reference
 

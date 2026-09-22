@@ -58,6 +58,7 @@ All configuration lives in `docs.json` at the project root.
 | `thumbnails` | object | — | Social share preview images |
 | `icons` | object | — | Icon library selection |
 | `metadata` | object | — | Timestamp display |
+| `localization` | object | — | Language auto-redirect behavior |
 | `interaction` | object | — | Drilldown navigation behavior |
 | `integrations` | object | — | Analytics and support tools |
 | `analytics` | object | — | Jamdesk built-in analytics |
@@ -588,7 +589,31 @@ Social share preview images:
 }
 ```
 
-When `true`, pages show last-modified date.
+When `true`, pages show a "Last updated on" line in the footer, sourced from the page's last git-commit date (or from frontmatter `lastUpdatedDate` when set — see [Page Frontmatter](../SKILL.md)). This flag only controls the visible footer line: the sitemap `<lastmod>` and the page's structured-data `dateModified` pick up `lastUpdatedDate` regardless of whether `metadata.timestamp` is on.
+
+---
+
+## Localization
+
+```json
+{
+  "localization": {
+    "autoRedirect": true
+  }
+}
+```
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `autoRedirect` | boolean | `false` | Redirect a first-time visitor from the site root to the language matching their browser's `Accept-Language` header |
+
+Requires two or more `navigation.languages` (see [navigation.md](./navigation.md#pattern-7-multi-language)) — a project with fewer than two configured languages gets no routing descriptor at all, so the flag has nothing to redirect between.
+
+Scope is deliberately narrow:
+- Only the bare site root (`/` or a subpath-mounted `/docs`) is eligible. An explicit language URL (`/fr`) is the visitor's own stated choice and is never redirected away from, and a deep link is never redirected at all.
+- Crawlers/bots are never redirected.
+- The decision is cookie-first: once a visitor lands on a language (via this redirect or the language switcher), that choice is written to a cookie and remembered for a year, taking precedence over `Accept-Language` on every later visit — so the language switcher always overrides the header-based guess.
+- The redirect is a temporary (307) response, since the negotiated language can change per visitor.
 
 ---
 

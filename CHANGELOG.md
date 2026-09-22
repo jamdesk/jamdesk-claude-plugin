@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.22] - 2026-09-22
+
+### Added
+- `localization.autoRedirect` docs.json reference — opt-in, defaults to `false`. Redirects a first-time visitor from the bare site root (never a deep link or an explicit `/fr`-style language URL, never a crawler) to the language matching their `Accept-Language` header; the choice is cookie-persisted for a year and the language switcher always overrides it. Requires two or more `navigation.languages`.
+- `lastUpdatedDate` frontmatter reference (quoted string) overriding the git-commit date used for the "Last updated on" footer line, the sitemap `<lastmod>`, and JSON-LD `dateModified` — noting the footer line itself still requires `metadata.timestamp: true`, while the sitemap and structured data pick up `lastUpdatedDate` either way.
+- Code Fence Options reference (new subsection in components.md) — `title=`, `{n,n-n}` line highlighting, `showLineNumbers`, `startLine=N`, and the new `nocopy` flag, including that `nocopy` applies per tab inside a `CodeGroup`.
+
 ## [1.0.21] - 2026-08-20
 
 ### Added

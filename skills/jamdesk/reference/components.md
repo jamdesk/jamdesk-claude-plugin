@@ -150,6 +150,30 @@ Switchable tabbed content.
 
 ---
 
+## Code Fence Options
+
+Flags in a fenced code block's info string, after the language tag:
+
+````mdx
+```js title="app.js" showLineNumbers startLine=10 {2,4-6} nocopy
+function greet(name) {
+  return `Hello, ${name}`;
+}
+```
+````
+
+| Flag | Description |
+|------|-------------|
+| `title="filename.js"` | Caption shown above the block |
+| `{1,3-5}` | Highlight the listed line numbers |
+| `showLineNumbers` | Show a line-number gutter |
+| `startLine=N` | First gutter number when `showLineNumbers` is set (default `1`) |
+| `nocopy` | Suppress the copy button on this block |
+
+All five are independent of the fence's language and can be combined in any mix.
+
+---
+
 ## CodeGroup
 
 Tabbed code blocks — syntactic sugar for language switching.
@@ -169,6 +193,8 @@ pnpm add my-package
 ````
 
 The first line of each code block (`bash npm`) sets the language and tab label.
+
+Code Fence Options above apply per block inside a `CodeGroup` too — for example, `nocopy` on one tab's fence hides the copy button for that tab only, not the whole group.
 
 ---
 

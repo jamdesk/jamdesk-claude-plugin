@@ -416,6 +416,8 @@ Documentation translated into multiple languages:
 
 **Supported language codes:** `en`, `es`, `fr`, `fr-CA`, `de`, `ja`, `ko`, `zh`, `zh-Hans`, `zh-Hant`, `pt`, `pt-BR`, `it`, `ru`, `ro`, `cs`, `id`, `ar`, `tr`, `hi`, `sv`, `no`, `lv`, `nl`, `uk`, `vi`, `pl`, `uz`, `he`
 
+Want a visitor's browser language picked automatically instead of always landing on the default? That's `localization.autoRedirect` — a separate, top-level `docs.json` key (it governs site-wide routing behavior, not a per-language property), documented in [configuration.md](./configuration.md#localization).
+
 ---
 
 ## Pattern 8: Dropdowns
