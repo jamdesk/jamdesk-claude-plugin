@@ -28,7 +28,7 @@ All configuration lives in `docs.json` at the project root.
 | Field | Type | Description |
 |-------|------|-------------|
 | `name` | string | Project/organization name displayed throughout the site |
-| `theme` | string | Documentation theme: `jam`, `nebula`, `pulsar`, or `halo` |
+| `theme` | string | Documentation theme: `jam`, `nebula`, `pulsar`, `halo`, or `dusk` |
 | `colors` | object | Brand colors (at minimum `colors.primary`) |
 | `navigation` | object | Site navigation structure |
 
@@ -69,7 +69,7 @@ All configuration lives in `docs.json` at the project root.
 
 ## Theme
 
-Four themes with distinct visual styles:
+Five themes with distinct visual styles:
 
 | Theme | Description |
 |-------|-------------|
@@ -77,6 +77,7 @@ Four themes with distinct visual styles:
 | `nebula` | Spacious, airy — similar to jam with different typography |
 | `pulsar` | Bold, high-contrast — tabs at top by default |
 | `halo` | Warm and soft — sand background, content on a raised card, heavily rounded, Figtree |
+| `dusk` | Quiet and flat — one calm surface, 1px borders, Ink blue accent, high-contrast text |
 
 ```json
 {

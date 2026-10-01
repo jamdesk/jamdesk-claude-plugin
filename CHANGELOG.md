@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.23] - 2026-10-01
+
+### Added
+- Dusk, a fifth `theme` value for `docs.json`: quiet and flat, one calm surface with 1px borders, Ink blue accent, Inter body, IBM Plex Serif headings, JetBrains Mono code, and high-contrast text. Added to the `theme` field reference and the theme table, and to the `tabsPosition` defaults (Dusk defaults to `"left"`, like `jam`, `nebula`, and `halo`).
+
 ## [1.0.22] - 2026-09-22
 
 ### Added
