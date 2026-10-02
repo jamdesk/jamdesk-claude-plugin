@@ -450,8 +450,10 @@ Font Awesome styles: `solid`, `regular`, `light`, `thin`, `duotone`, `brands`, `
 | `socialCard.theme` | string | `"light"` | Generated social card style: `light` or `dark`. `dark` uses light text on a dark background and `logo.dark`. |
 | `socialCard.brandColor` | boolean | `false` | Color the card's bottom bar and section badge with `colors.primary` (`colors.light` on a dark card, the theme's accent if `colors` is unset). If the color doesn't stand out enough against the card background (too light on a light card, too dark on a dark one), the badge text falls back to the normal text color. `false` keeps the default red. |
 | `socialCard.accentBar` | boolean | `true` | `false` removes the bar along the bottom of the card. |
-| `socialCard.siteName` | boolean | `true` | `false` hides the site name under the logo (for logos that already include the name). |
+| `socialCard.siteName` | boolean | `true` | `false` hides the site name under the logo (for logos that already include the name). The name stays when the card shows the favicon in place of the logo. |
 | `socialCard.customImage` | string | `"background"` | How a custom `og:image` is used. `background` draws the page title on top of it. `replace` serves the `og:image` as the whole card with no text; page frontmatter `og:image` wins over `seo.metatags`, `og:image:width`/`og:image:height` are emitted only in this mode and only from the same layer as the image, and pages with no `og:image` anywhere still get the generated card. |
+
+The card can only draw SVG, PNG and JPG logos. Jamdesk converts PNG and JPG logo files in the repo to WebP at build time, so the card usually shows the favicon instead and keeps the site name, even with `siteName: false`. Recommend an SVG logo for the full logo on the card (and `logo.dark` on a dark card).
 
 Without `seo.socialCard`, the generated card is unchanged. Older CLI versions reject the key in `jamdesk validate` and `jamdesk dev`; upgrade with `npm i -g jamdesk@latest`.
 

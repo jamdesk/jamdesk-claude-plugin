@@ -4,6 +4,7 @@
 
 ### Added
 - `seo.socialCard` docs.json reference, opt-in: without it the generated social card is unchanged. Five keys: `theme` (`light`/`dark`, default `light`), `brandColor` (default `false`; uses `colors.primary`, `colors.light` on a dark card, the theme's accent when `colors` is unset), `accentBar` (default `true`), `siteName` (default `true`), and `customImage` (`background`/`replace`, default `background`). In `replace` mode the winning `og:image` (page frontmatter over `seo.metatags`) is the whole image with no text, and `og:image:width`/`og:image:height` come from the same layer as the image. Older CLI versions reject the key until upgraded.
+- Social card logo note: the card draws SVG, PNG and JPG logos only, and the build converts PNG/JPG logo files to WebP, so the card usually shows the favicon and keeps the site name even with `siteName: false`. SVG logos are the reliable choice.
 
 ## [1.0.23] - 2026-10-01
 
