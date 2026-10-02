@@ -432,6 +432,10 @@ Font Awesome styles: `solid`, `regular`, `light`, `thin`, `duotone`, `brands`, `
     "indexHiddenPages": false,
     "ai": {
       "llmsTxt": true
+    },
+    "socialCard": {
+      "theme": "dark",
+      "brandColor": true
     }
   }
 }
@@ -443,6 +447,13 @@ Font Awesome styles: `solid`, `regular`, `light`, `thin`, `duotone`, `brands`, `
 | `indexing` | string | `"navigable"` | `navigable` (only nav pages) or `all` |
 | `indexHiddenPages` | boolean | `false` | Include hidden pages in sitemap |
 | `ai.llmsTxt` | boolean | `true` | Generate `llms.txt` and `llms-full.txt` for AI tools. Set `false` to stop publishing them. Independent of search indexing — a page can be indexed by search engines while excluded from AI ingestion, or vice versa. |
+| `socialCard.theme` | string | `"light"` | Generated social card style: `light` or `dark`. `dark` uses light text on a dark background and `logo.dark`. |
+| `socialCard.brandColor` | boolean | `false` | Color the card's bottom bar and section badge with `colors.primary` (`colors.light` on a dark card, the theme's accent if `colors` is unset). If the color is too light to read, the badge text falls back to the normal text color. `false` keeps the default red. |
+| `socialCard.accentBar` | boolean | `true` | `false` removes the bar along the bottom of the card. |
+| `socialCard.siteName` | boolean | `true` | `false` hides the site name under the logo (for logos that already include the name). |
+| `socialCard.customImage` | string | `"background"` | How a custom `og:image` is used. `background` draws the page title on top of it. `replace` serves the `og:image` as the whole card with no text; page frontmatter `og:image` wins over `seo.metatags`, `og:image:width`/`og:image:height` are emitted only in this mode and only from the same layer as the image, and pages with no `og:image` anywhere still get the generated card. |
+
+Without `seo.socialCard`, the generated card is unchanged. Older CLI versions reject the key in `jamdesk validate` and `jamdesk dev`; upgrade with `npm i -g jamdesk@latest`.
 
 ---
 

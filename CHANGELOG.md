@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.24] - 2026-10-02
+
+### Added
+- `seo.socialCard` docs.json reference, opt-in: without it the generated social card is unchanged. Five keys: `theme` (`light`/`dark`, default `light`), `brandColor` (default `false`; uses `colors.primary`, `colors.light` on a dark card, the theme's accent when `colors` is unset), `accentBar` (default `true`), `siteName` (default `true`), and `customImage` (`background`/`replace`, default `background`). In `replace` mode the winning `og:image` (page frontmatter over `seo.metatags`) is the whole image with no text, and `og:image:width`/`og:image:height` come from the same layer as the image. Older CLI versions reject the key until upgraded.
+
 ## [1.0.23] - 2026-10-01
 
 ### Added
