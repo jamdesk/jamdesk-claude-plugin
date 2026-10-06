@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.25] - 2026-10-05
+
+### Added
+- `seo.titleTemplate` docs.json reference, opt-in: a string containing `%s` (max 200 characters) that sets the browser tab and search result title. Every `%s` is replaced with the page title, the default is `%s — <site name>`, and `"%s"` alone leaves out the site name. It does not change `og:title`, and a page with no title or a title equal to the site name shows the site title as-is. Older CLI versions reject the key until upgraded.
+- Social card logo note: the card can't draw text inside an SVG logo, so convert it to outlines before export. The build suggests this in the dashboard, `jamdesk validate` and `jamdesk dev` when the SVG logo the card uses contains text; logos linked from another site aren't checked.
+
 ## [1.0.24] - 2026-10-02
 
 ### Added
