@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.26] - 2026-10-07
+
+### Fixed
+- `seo.titleTemplate`: corrected which pages skip the template. A page with no `title` shows `<name> Documentation` (or `<name>` alone when it already ends in "Docs" or "Documentation"), and a page whose title equals `name` shows that title alone. Also notes that a template with no `%s` fails the build, that `twitter:title` is unchanged too, and that it needs CLI 1.1.220.
+- SVG logo text: logos set to a full URL aren't checked, and how to convert text in Figma and Illustrator.
+
 ## [1.0.25] - 2026-10-05
 
 ### Added
