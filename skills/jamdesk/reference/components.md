@@ -812,6 +812,8 @@ Diagrams using Mermaid syntax.
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `minWidth` | string | — | Minimum SVG width (e.g., `"700px"`) |
+| `noZoom` | boolean | `false` | Turn off click-to-expand for this diagram |
+| `noZoom` | boolean | `false` | Turn off click to expand for this diagram |
 
 ```mdx
 <Mermaid>
@@ -832,6 +834,19 @@ sequenceDiagram
   CDN-->>Client: Site live
 </Mermaid>
 ```
+
+On screens 768px and wider, clicking a diagram opens it full screen. With the keyboard, focus the diagram and press Enter. Escape, the close button or a click outside closes it. Use `<Mermaid noZoom>` to turn this off for one diagram. Diagrams written as ```` ```mermaid ```` code fences always open full screen.
+
+On screens 768px and wider, clicking a diagram opens it full screen. Focus it and press Enter to open with the keyboard; Escape, the close button or a click outside closes it. Add `noZoom` to opt one diagram out:
+
+```mdx
+<Mermaid noZoom>
+graph LR
+  A[Request] --> B[Response]
+</Mermaid>
+```
+
+Diagrams written as ```` ```mermaid ```` code fences always open full screen. Colors set with `style` and `classDef` stay the same in light and dark mode.
 
 ---
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.27] - 2026-10-11
+
+### Added
+- `chat.label` and `chat.icon` docs.json reference. The label replaces "Ask AI" on the chat button, panel header and search shortcut (up to 40 characters, same in every language). The icon is a Font Awesome name, an image URL or a project image path; the default is `sparkles`.
+- `tabsAlignment` docs.json reference: `start` (default), `center` or `end` for the tab row when tabs are in the header. No effect with `tabsPosition: "left"` or in the Pulsar theme.
+- Mermaid click to expand: clicking a diagram opens it full screen on screens 768px and wider, and `noZoom` on the `<Mermaid>` component opts one diagram out. Code fence diagrams always expand. Colors from `style` and `classDef` now match in light and dark mode.
+
 ## [1.0.26] - 2026-10-07
 
 ### Fixed
