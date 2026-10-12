@@ -489,7 +489,7 @@ Without `seo.socialCard`, the generated card is unchanged. Older CLI versions re
       "What components are available?",
       "How do I deploy my docs?"
     ],
-    "label": "Altitude Assistant",
+    "label": "Docs Assistant",
     "icon": "/images/assistant.svg"
   }
 }
