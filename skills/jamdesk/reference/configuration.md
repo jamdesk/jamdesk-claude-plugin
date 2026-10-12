@@ -48,8 +48,6 @@ All configuration lives in `docs.json` at the project root.
 | `background` | object | — | Background images and decoration |
 | `styling` | object | — | Code block themes, eyebrows, typography |
 | `tabsPosition` | string | theme default | Tab placement: `left` or `top` |
-| `tabsAlignment` | string | `start` | Alignment of the tab row when `tabsPosition` is `top`: `start`, `center` or `end`. No effect with `left` tabs or in the Pulsar theme |
-| `tabsAlignment` | string | `start` | Where the tab row sits when tabs are in the header: `start`, `center` or `end`. No effect with `tabsPosition: "left"` or in the Pulsar theme |
 | `api` | object | — | OpenAPI/AsyncAPI configuration |
 | `seo` | object | — | Meta tags and indexing behavior |
 | `search` | object | — | Search customization |
@@ -500,19 +498,6 @@ Without `seo.socialCard`, the generated card is unchanged. Older CLI versions re
 |-------|------|---------|-------------|
 | `enabled` | boolean | `true` | Enable AI chat |
 | `starterQuestions` | array | auto-generated | Suggested questions. Set to `[]` to disable |
-| `label` | string | "Ask AI" | Replaces "Ask AI" on the chat button, panel header and search shortcut. Up to 40 characters. Applies to every language |
-| `icon` | string | `sparkles` | A Font Awesome icon name, an image URL, or a path to an image in your project. Font Awesome icons follow your accent color; an image is shown as is, so use one that reads on light and dark backgrounds |
-
-```json
-{
-  "chat": {
-    "label": "Altitude Assistant",
-    "icon": "/images/assistant.svg"
-  }
-}
-```
-| `label` | string | "Ask AI" in the page's language | Replaces "Ask AI" on the chat button, panel header and search shortcut. Up to 40 characters. Applies to every language |
-| `icon` | string | `sparkles` | A Font Awesome icon name, an image URL, or a path to an image in the project. A Font Awesome icon follows the accent color; an image is shown as is, so use one that reads on light and dark backgrounds |
 
 A value that starts with `http://`, `https://` or `/`, or ends in an image extension, is treated as an image. Anything else is a Font Awesome name such as `robot`.
 
