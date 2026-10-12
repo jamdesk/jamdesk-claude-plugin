@@ -200,6 +200,12 @@ Multiple top-level tabs for separate documentation sections:
 - `"left"` — Tabs in sidebar (default for `jam`, `nebula`, `halo`, and `dusk` themes)
 - `"top"` — Tabs in header bar (default for `pulsar` theme)
 
+**Tab alignment** (`tabsAlignment` in root config): when tabs are in the header, `"start"` (default) puts the tab row at the left, `"center"` centers it, `"end"` puts it at the right. It has no effect with `tabsPosition: "left"`, and none in the Pulsar theme, which places top tabs on the right side of the header.
+
+```json
+{ "tabsPosition": "top", "tabsAlignment": "center" }
+```
+
 Best for: Sites with distinct audiences or content types (guides vs API vs help).
 
 ### External Tab Links
