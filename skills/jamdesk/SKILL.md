@@ -204,6 +204,41 @@ pnpm add my-package
 | `jamdesk deploy --full-rebuild` | Force full rebuild (no cache) |
 | `jamdesk deploy --allow-empty` | Deploy even with zero .mdx content pages (deploys with no content are refused by default to prevent accidentally publishing an empty site) |
 | `jamdesk deploy-proxy cloudflare` | Generate Cloudflare Worker for hosting at custom domain |
+| `jamdesk deploy -m "<message>"` | In a folder made by `jamdesk pull`: commit uncommitted changes with this message (default "Update docs"), then publish |
+| `jamdesk deploy --allow-secret-files` | In a folder made by `jamdesk pull`: publish files whose names look like secrets. Ask the user before using it |
+| `jamdesk pull` | Download a project hosted by Jamdesk (no GitHub) into `./<slug>` as a git repository with full history. Inside a pulled folder, merges new Jamdesk changes instead. Needs `jamdesk login`, git, and CLI 1.1.227 or later |
+| `jamdesk pull --project <id-or-slug>` | Pull a specific project (skips the prompt when the user has several hosted projects) |
+| `jamdesk pull --dir <path>` | Pull into another folder |
+| `jamdesk pull --force` | Turn a non-empty folder (for example a read-only copy from CLI 1.1.226) into a git copy. Its files stay as uncommitted changes |
+
+### Projects Hosted by Jamdesk
+
+A project set up with **Continue without GitHub** has no GitHub repository the user owns. Jamdesk keeps the source in a private repository. The user edits it in the dashboard web editor, or locally with `jamdesk pull` and `jamdesk deploy`.
+
+Local workflow:
+
+1. `jamdesk pull` creates `./<slug>`, a real git repository. Run `jamdesk dev` there to preview.
+2. Edit files. Commits are optional.
+3. `jamdesk deploy` (from any subfolder) commits uncommitted changes, uploads the new commits as a git bundle, and Jamdesk fast-forwards its repository and builds. It never reads or rewrites `projectId` in `docs.json`. `--full-rebuild` and `--allow-empty` are ignored there.
+
+Before deploy commits anything it refuses, and lists, files it won't publish: anything under `.github/`, symlinks, nested git repositories, files over 25 MB, text files with conflict markers, and secret-looking names (`service_account*.json`, names starting with `secret`) unless `--allow-secret-files` is passed. `.env`, `.env.*`, `*.pem`, `*.key` and `credentials.json` are in `.git/info/exclude` and are never committed. It checks local commits the same way, so a bad file in an earlier commit blocks the deploy even if a later commit deletes it (the error prints a `git reset --soft <sha>` command). One deploy can push up to 100 MB. The server allows 30 CLI sync calls per 10 minutes per project (a deploy uses two).
+
+When something goes wrong:
+
+- `Jamdesk has changes you don't have yet` (`HOSTED_STALE`): someone edited in the web editor or deployed from another copy. The local commit is kept. Run `jamdesk pull` (merges), then `jamdesk deploy`.
+- `jamdesk pull` refuses uncommitted changes: commit first, or run `jamdesk deploy`.
+- `Some files changed both here and in Jamdesk.`: resolve the conflicts, `git add`, `git commit --no-edit`, then `jamdesk deploy`. Deploy refuses while a merge or rebase is unfinished (`MERGE_IN_PROGRESS`).
+- `Jamdesk couldn't confirm the publish` (`PUSH_UNCONFIRMED`): run `jamdesk pull` to check, then deploy again.
+- `This project isn't hosted by Jamdesk anymore` (`NOT_HOSTED`): the docs moved to GitHub. Deploy prints the `git remote add origin` and `git pull` commands to connect the folder to the new repository.
+
+Other rules:
+
+- The user can add their own git remote (for example a private backup) and push to it. That doesn't publish anything. Never name it `jamdesk`: the CLI keeps its base ref at `refs/remotes/jamdesk/<branch>`.
+- The folder must stay on the branch Jamdesk publishes from (`WRONG_BRANCH` otherwise).
+- AI Translation isn't available until the docs move to GitHub.
+- If the subscription ends, Jamdesk deletes the source at least 30 days later and emails the owner first.
+
+**Move to GitHub** (dashboard Settings, Git Repository card, owner only, any plan) copies the full Git history into an empty GitHub repository the owner creates. The project then publishes from pushes to it, with the same slug and domains. Guide: [Docs Without GitHub](https://www.jamdesk.com/docs/setup/without-github).
 
 ### Authentication
 

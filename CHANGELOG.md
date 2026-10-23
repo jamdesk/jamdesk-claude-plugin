@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.28] - 2026-10-23
+
+### Added
+- `jamdesk pull` (CLI 1.1.227): downloads a project hosted by Jamdesk (no GitHub) as a git repository with full history, or merges new Jamdesk changes into a folder it made. Flags `--project <id-or-slug>`, `--dir <path>` and `--force` (turns a non-empty folder, such as an old read-only copy, into a git copy, keeping its files as changes).
+- Hosted deploy flow: in a pulled folder, `jamdesk deploy` commits changes (`-m` sets the message), refuses `.github/` files, symlinks, files over 25 MB, conflict markers and secret-looking files (unless `--allow-secret-files`) before committing, and publishes up to 100 MB per deploy. Covers the stale case (run `jamdesk pull`, then deploy), conflicts, adding a personal remote, and moving to GitHub.
+
 ## [1.0.27] - 2026-10-11
 
 ### Added
