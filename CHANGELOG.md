@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.29] - 2026-10-26
+
+### Added
+- `jamdesk fix --json` (CLI 1.1.229): prints the fix plan and the issues it can't fix as one JSON document for an AI agent. It writes nothing and asks nothing.
+- `jamdesk ai-fix [off|review|auto]` (CLI 1.1.229): shows or sets the project's AI Fixes mode. Auto-fix makes Jamdesk commit link, title and description fixes to the build branch after each build, so the skill says to ask the user first.
+
 ## [1.0.28] - 2026-10-23
 
 ### Added

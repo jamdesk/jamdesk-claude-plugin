@@ -194,6 +194,10 @@ pnpm add my-package
 | `jamdesk spellcheck --fix` | Interactive mode — fix or add words to ignore list |
 | `jamdesk openapi-check <spec>` | Validate a single OpenAPI spec (local file or URL) |
 | `jamdesk rename <from> <to>` | Rename file and update all references in docs.json + MDX |
+| `jamdesk fix` | Fix broken internal links in local files, with AI help for links and missing descriptions when logged in (asks before writing; `--dry-run` previews, `--yes` skips the prompt) |
+| `jamdesk fix --json` | Print the fix plan and unfixable issues as JSON for an AI agent. Writes nothing. Needs CLI 1.1.229 or later |
+| `jamdesk ai-fix` | Show the project's AI Fixes mode (Off, Review first or Auto-fix) |
+| `jamdesk ai-fix off\|review\|auto` | Set it. Ask the user before setting `auto`: Jamdesk then commits fixes to the project's build branch after each build |
 
 ### Deployment
 
