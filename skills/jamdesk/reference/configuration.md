@@ -43,7 +43,7 @@ All configuration lives in `docs.json` at the project root.
 | `fonts` | string \| object | — | Typography configuration |
 | `navbar` | object | — | Top navigation bar |
 | `banner` | object | — | Message bar above the navbar on every page |
-| `footer` | object | — | Footer with social links and link columns |
+| `footer` | object | — | Footer with social links, link columns and a copyright line |
 | `anchors` | array | — | External links at sidebar top |
 | `appearance` | object | — | Theme mode (light/dark/system) |
 | `background` | object | — | Background images and decoration |
@@ -267,10 +267,16 @@ A message bar shown above the navbar on every page.
           { "label": "Changelog", "href": "/changelog" }
         ]
       }
-    ]
+    ],
+    "copyright": "© 2026 Example Inc."
   }
 }
 ```
+
+- `links`: up to 4 columns. `header` is optional, `items` is required.
+- `copyright`: plain text, up to 200 characters, shown on the footer's bottom line next to "Powered by Jamdesk". Markdown and HTML aren't rendered and line breaks show as spaces. Needs CLI 1.1.231+ to preview.
+- Per-language footer: any `navigation.languages[]` entry (except href-only ones) takes a `footer` with the same fields. It replaces the top-level footer for that language, nothing is merged, and `"footer": {}` removes the links, socials and copyright for that language. A language without `footer` uses the top-level one. AI translation doesn't translate footers but keeps a `footer` you add to a generated language entry.
+- Stable CSS hooks for `style.css`: `.jd-footer`, `.jd-footer--embed`, `.jd-footer-columns`, `.jd-footer-column`, `.jd-footer-column-title`, `.jd-footer-link`, `.jd-footer-bottom`, `.jd-footer-socials`, `.jd-footer-social[data-platform="<social key>"]`, `.jd-footer-copyright`, `.jd-footer-branding`. Prefer these over Tailwind classes, which can change.
 
 **Supported social keys:** `x`, `github`, `linkedin`, `discord`, `website`, `facebook`, `youtube`, `slack`, `instagram`, `hacker-news`, `medium`, `telegram`, `bluesky`, `threads`, `reddit`, `podcast`
 

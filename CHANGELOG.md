@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.31] - 2026-11-07
+
+### Added
+- `footer.copyright` (CLI 1.1.231): a plain-text line, up to 200 characters, on the footer's bottom line.
+- Per-language footers: `navigation.languages[].footer` replaces the top-level footer for that language, and `{}` removes its links, socials and copyright.
+- Stable footer CSS hooks (`.jd-footer`, `.jd-footer-column-title`, `.jd-footer-social[data-platform="github"]` and others) for custom CSS.
+
 ## [1.0.30] - 2026-11-07
 
 ### Added
