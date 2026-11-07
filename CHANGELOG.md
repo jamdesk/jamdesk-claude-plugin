@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.30] - 2026-11-07
+
+### Added
+- `banner` docs.json reference: `content` (inline markdown), `dismissible` and `type` (CLI 1.1.231). `info` is the default and uses the accent color, `warning` is amber and `danger` is red, both with an icon. A dismissed banner shows again when its content or type changes.
+- Per-language banners: `navigation.languages[].banner` replaces the top-level banner on that language's pages. Leave it out to use the top-level one.
+- Stable banner CSS hooks (`.jd-banner[data-type]`, `.jd-banner-icon`, `.jd-banner-content`, `.jd-banner-close`) and the `--jd-banner-bg`, `--jd-banner-fg` and `--jd-banner-height` variables.
+
 ## [1.0.29] - 2026-10-26
 
 ### Added

@@ -417,7 +417,7 @@ Documentation translated into multiple languages:
 | `default` | boolean | `false` | Default language |
 | `groups` | array | — | Language-specific documentation |
 | `href` | string | — | External URL for language |
-| `banner` | object | — | Banner message: `{ content, dismissible }` |
+| `banner` | object | — | Banner for this language: `{ content, dismissible, type }`. Replaces the top-level banner on this language's pages; omit it to use the top-level one. See [configuration.md](./configuration.md#banner) |
 | `hidden` | boolean | `false` | Hide from selector |
 
 **Supported language codes:** `en`, `es`, `fr`, `fr-CA`, `de`, `ja`, `ko`, `zh`, `zh-Hans`, `zh-Hant`, `pt`, `pt-BR`, `it`, `ru`, `ro`, `cs`, `id`, `ar`, `tr`, `hi`, `sv`, `no`, `lv`, `nl`, `uk`, `vi`, `pl`, `uz`, `he`

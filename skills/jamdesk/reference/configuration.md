@@ -42,6 +42,7 @@ All configuration lives in `docs.json` at the project root.
 | `favicon` | string \| object | — | Favicon path(s) |
 | `fonts` | string \| object | — | Typography configuration |
 | `navbar` | object | — | Top navigation bar |
+| `banner` | object | — | Message bar above the navbar on every page |
 | `footer` | object | — | Footer with social links and link columns |
 | `anchors` | array | — | External links at sidebar top |
 | `appearance` | object | — | Theme mode (light/dark/system) |
@@ -212,6 +213,31 @@ Single path or light/dark variants:
 | `style` | string | `default` or `topOfContent` |
 | `links` | array | Navigation links with `label`, `href`, optional `icon` |
 | `primary` | object | CTA button: `type` (`button` \| `github`), `label`, `href` |
+
+---
+
+## Banner
+
+A message bar shown above the navbar on every page.
+
+```json
+{
+  "banner": {
+    "content": "Version 2 is out. [Read the upgrade guide](/upgrade).",
+    "dismissible": true,
+    "type": "warning"
+  }
+}
+```
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `content` | string | — | Banner text (required). Inline markdown only: links, bold and italic |
+| `dismissible` | boolean | `false` | Show a close button. A dismissed banner comes back when its `content` or `type` changes |
+| `type` | string | `"info"` | `info` uses the accent color and no icon, `warning` is amber with an icon, `danger` is red with an icon. Needs CLI 1.1.231+ to preview |
+
+- Per-language banner: any `navigation.languages[]` entry can have its own `banner` with the same fields. It replaces the top-level banner on that language's pages. A language without `banner` uses the top-level one.
+- Stable CSS hooks for `style.css`: `.jd-banner` (with `[data-type="info|warning|danger"]`), `.jd-banner-icon`, `.jd-banner-content`, `.jd-banner-close`. Set `--jd-banner-bg` and `--jd-banner-fg` on `.jd-banner` to change its colors. `--jd-banner-height` holds the banner's height, for offsetting your own sticky elements.
 
 ---
 
