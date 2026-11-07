@@ -743,6 +743,7 @@ Gate every page behind a password. Optionally allow specific pages to remain pub
 | `enabled` | boolean | `false` | Gate the entire site behind a password |
 | `hint` | string | — | Hint shown on the unlock page (plain text, max 200 chars) |
 | `public` | array | — | Paths or globs that bypass the password. Supports `*` (one segment) and `**` (recursive). Max 100 entries |
+| `allowMembers` | boolean | `false` | Adds a **Sign in with Jamdesk** button to the unlock page so the project owner and project members can sign in with their Jamdesk login. See Team Sign-In below |
 
 **Public exceptions** can also be declared via:
 - **Frontmatter**: `public: true` in a page's MDX frontmatter
@@ -783,6 +784,32 @@ This page requires a password.
 | `private` | array | Exact paths (starting with `/`) that require the password |
 
 Both sources are merged — frontmatter `private: true` and `auth.password.private[]` entries combine into the private set.
+
+### Team Sign-In
+
+Set `allowMembers: true` and the unlock page shows a **Sign in with Jamdesk** button next to the password field. Outside readers still use the shared password.
+
+```json
+{
+  "auth": {
+    "password": {
+      "enabled": true,
+      "allowMembers": true
+    }
+  }
+}
+```
+
+- Who can sign in: the project owner and anyone added under **Settings → Members** in the dashboard. Members also get full editor access to the project in the dashboard, so only suggest adding people the user trusts with that. There is no separate readers list.
+- Sessions last 14 days. Removing someone from the project ends their docs access within about a minute.
+- Changing the password or clicking **Revoke all sessions** doesn't sign team members out. Team sign-ins don't affect password sessions.
+- Team-only docs: turn on `enabled` and `allowMembers` and don't set a password. Only the team can get in.
+- Works on `<slug>.jamdesk.app` and the project's connected custom domain (including Cloudflare Worker and subpath setups on that domain). Other aliases such as `www.` aren't supported.
+- Needs a paid plan. If the owner's plan lapses, new team sign-ins stop and existing sessions run out within 14 days.
+- Signed-in team members get AI chat, MCP, `.md` URLs and `llms.txt` the same as after typing the password.
+- Applies to password protection only. `auth.jwt` sites ignore it.
+
+Full guide: [Let your team sign in with Jamdesk](https://jamdesk.com/docs/setup/password-protection#let-your-team-sign-in-with-jamdesk).
 
 ### Mode Detection
 

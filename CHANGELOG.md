@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.32] - 2026-11-07
+
+### Added
+- `auth.password.allowMembers` (boolean, default `false`): the unlock page gets a **Sign in with Jamdesk** button for the project owner and project members, with 14-day sessions. Leave the password unset for team-only docs. Needs a paid plan and applies to password protection only.
+
 ## [1.0.31] - 2026-11-07
 
 ### Added
